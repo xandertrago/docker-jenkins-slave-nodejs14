@@ -2,6 +2,8 @@ FROM ubuntu:20.04
 MAINTAINER Szczepan Kozioł <szczepankoziol@gmail.com>
 
 # Make sure the package repository is up to date.
+ENV TZ=Europe/Warsaw
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get update && apt-get -qy full-upgrade && apt-get -qy install \
     git \
     curl \
